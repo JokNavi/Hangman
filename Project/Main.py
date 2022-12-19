@@ -5,12 +5,15 @@ from Graphics import Grid, push_up
 special_word = str()
 # The word that was generated at the beggining of the game. if this word is found before the hangman dies the game ends
 
+shown_word = list()
+# Contains all the correct letters and missing letter tokens needed to form the word. Gets displayed on the screen.
+
 wrong_guesses = list()
 # List of all the guesses made that weren't correct. Contains both letters and words.
 
 
 def contains_letter_check():
-    '''Checks if the chosen word contains the selected letter.'''
+    '''Checks if the chosen word contains the selected letter. If they were wrong Can check words'''
     pass
 
 
