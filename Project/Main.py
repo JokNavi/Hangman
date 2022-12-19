@@ -1,3 +1,4 @@
+import random
 from Graphics import Grid, push_up
 
 
@@ -15,7 +16,13 @@ def contains_letter_check():
 
 def generate_word():
     '''Picks a word from a list of a bunch of possible words'''
-    pass
+    with open(r'Project/Possible words.txt', "r") as f:
+    # Open the file containing random words used in hangman.
+        possible_words = [word.strip().lower() for word in f.readlines()]
+        # Read the file and strip the newline and captital letters from each word.
+        global special_word
+        special_word = random.choice(possible_words)
+        # Set the global variable special_word to a random word from the possible words list.
 
 
 def main_program():
@@ -27,6 +34,8 @@ if __name__ == "__main__":
     SIZE = 20
     HangmanScreen = Grid(SIZE*3, SIZE)
 
-    push_up(20)
+    #push_up(20)
 
-    HangmanScreen.print_grid()
+    # HangmanScreen.print_grid()
+    generate_word()
+    print(special_word)
