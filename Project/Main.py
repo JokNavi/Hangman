@@ -9,15 +9,25 @@ wrong_guesses = list()
 # List of all the guesses made that weren't correct. Contains both letters and words.
 
 
+def good_guess():
+    '''Contains the logic for when the guess was correct. Will update the shown_word global variable and check if the word is found yet.'''
+    pass
+
+
+def bad_guess():
+    '''Contains the logic for when the guess was wrong. Will update the hangman display.'''
+    pass
+
+
 def contains_letter_check():
-    '''Checks if the chosen word contains the selected letter.'''
+    '''Checks if the chosen word contains the selected letter. Can check words'''
     pass
 
 
 def generate_word():
     '''Picks a word from a list of a bunch of possible words'''
     with open(r'Project/Possible words.txt', "r") as f:
-    # Open the file containing random words used in hangman.
+        # Open the file containing random words used in hangman.
         possible_words = [word.strip().lower() for word in f.readlines()]
         # Read the file and strip the newline and captital letters from each word.
         global special_word
@@ -34,8 +44,9 @@ if __name__ == "__main__":
     SIZE = 20
     HangmanScreen = Grid(SIZE*3, SIZE)
 
-    #push_up(20)
+    # push_up(20)
 
     # HangmanScreen.print_grid()
     generate_word()
     print(special_word)
+    bad_guess()
