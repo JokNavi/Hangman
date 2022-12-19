@@ -18,9 +18,8 @@ def print_shown_word():
     # Convert global list shown_word into a string and put it into a local variable with the same name. So we can write it into a file.
     with open(r"Visuals/Shown word.txt", "w") as f:
         f.write(shown_word_str)
-        # Overwrite shown_word.txt and replace it's contents with a string version of the global shown_word. 
+        # Overwrite shown_word.txt and replace it's contents with a string version of the global shown_word.
     centered_x = int(14-(len(shown_word_str)/2))
-    print(centered_x)
     HangmanScreen.load_picture_file(centered_x, 1, "Shown word.txt")
 
 
@@ -37,17 +36,18 @@ def bad_guess(user_choice):
     match len(wrong_guesses):
         # Check how many wrong guesses are now in the list and update the hangman visual accordingly.
         case 1:
-            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 2.txt")
+            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 1.txt")
         case 2:
-            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 3.txt")
+            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 2.txt")
         case 3:
-            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 4.txt")
+            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 3.txt")
         case 4:
-            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 5.txt")
+            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 4.txt")
         case 5:
-            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 6.txt")
+            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 5.txt")
         case 6:
-            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 7.txt")
+            HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 6.txt")
+            HangmanScreen.print_grid()
             print("RIP; Too many wrong guesses. You let the hangman die...")
             exit(0)
             # Close the game if the hangman is completed.
@@ -81,21 +81,21 @@ def main_program():
 
     generate_word()
     print(f"Generated word: \"{special_word.capitalize()}\"")
-
-    push_up(20)
-
     HangmanScreen.load_picture_file(0, 2, "H-Line.txt")
     HangmanScreen.load_picture_file(0, 0, "H-Line.txt")
     HangmanScreen.load_picture_file(0, 2, "V-Line.txt")
     HangmanScreen.load_picture_file(29, 2, "V-Line.txt")
-    HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 1.txt")
-    print_shown_word()
-    # bad_guess()
-    HangmanScreen.print_grid()
+    HangmanScreen.load_picture_file(10, 9, "Dead Guy/Character 0.txt")
+
+    for _ in range(6):
+        push_up(20)
+        print_shown_word()
+        bad_guess("L")
+        HangmanScreen.print_grid()
 
 
 if __name__ == "__main__":
     SIZE = 10
     HangmanScreen = Grid(SIZE*3, SIZE)
-
+    # The global screen instance. Anything to do with graphics will be done through this object's methods
     main_program()
